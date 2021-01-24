@@ -1,0 +1,85 @@
+﻿@page "/Calculator"
+@using BlazorWebApp.Data
+
+<h3>Calculator</h3>
+
+<table>
+    <tr>
+        <td>
+            ValueOne:
+        </td>
+        <td>
+            <input placeholder="ValueOne" @bind="ValueOne" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ValueTwo:
+        </td>
+        <td>
+            <input placeholder="ValueTwo" @bind="ValueTwo" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Total:
+        </td>
+        <td>
+            <input placeholder="Total" @bind="Total" />
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>
+            <input type="radio" id="plus" name="symbol" value="+" />
+            <label for="plus">+</label>
+        </td>
+        @*<td>
+            <input type="radio" id="minus" name="symbol" @bind="Symbol" />
+            <label for="minus">-</label>
+        </td>*@
+    </tr>
+    @*<tr>
+        <td>
+            <input type="radio" id="multiply" name="symbol" @bind="Symbol" />
+            <label for="multiply">*</label>
+        </td>
+        <td>
+            <input type="radio" id="divied" name="symbol" @bind="Symbol" />
+            <label for="divied">/</label>
+        </td>
+    </tr>*@
+</table>
+
+<button @onclick="Calculate">Calculate</button>
+
+@code {
+    private double ValueOne;
+    private double ValueTwo;
+    private string Symbol;
+    private double Total;
+
+    public void Calculate()
+    {
+        if (ValueOne >= 0 && ValueTwo >= 0)
+        {
+            switch (Symbol)
+            {
+                case "+":
+                    Total = ValueOne + ValueTwo;
+                    break;
+                case "-":
+                    Total = ValueOne - ValueTwo;
+                    break;
+                case "*":
+                    Total = ValueOne * ValueTwo;
+                    break;
+                case "/":
+                    Total = ValueOne / ValueTwo;
+                    break;
+            }
+        }
+    }
+}
